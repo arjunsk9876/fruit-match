@@ -7,3 +7,13 @@ CNN image classifier for the Fruits 360 dataset.
 [Fruits 360 on Kaggle](https://www.kaggle.com/datasets/moltean/fruits) (moltean/fruits). This project uses the `fruits-360_100x100` variant: 260 classes, 137,221 training images, 45,724 test images, 100x100 px RGB, white background.
 
 See [PRD.md](PRD.md) for full scope, goals, and approach.
+
+## Setup
+
+```
+python3 -m venv .venv && source .venv/bin/activate  # or use your Python 3.12 install directly
+pip install -r requirements.txt
+jupyter notebook notebooks/fruit_classifier.ipynb
+```
+
+Requires Python 3.12 (TensorFlow does not yet support the latest Python releases).
