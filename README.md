@@ -25,3 +25,21 @@ data/fruits-360/
 ```
 
 No Kaggle API download step is needed in the notebook since the data is already on hand.
+
+## Results
+
+Full details, plots, and confusion matrix are in [notebooks/fruit_classifier.ipynb](notebooks/fruit_classifier.ipynb).
+
+| Model | Test accuracy | Params | Train time (CPU, Apple M1 Pro) |
+|---|---|---|---|
+| Baseline CNN (from scratch) | 88.81% | 522,948 | ~10.3 hours |
+| MobileNetV2 (transfer learning) | 94.81% | 2,591,044 | ~2.1 hours |
+
+Neither model quite hit the PRD's >=95% target on this run — training was CPU-only
+(no GPU), so both runs were cut off by early stopping / a fixed epoch budget rather
+than run to full convergence. The transfer-learning result suggests the target is
+reachable with more training budget, not a different approach.
+
+**Limitations:** Fruits-360 images are studio-quality (centered, single object,
+uniform white background). This model has not been validated on real-world photos
+and should not be treated as production-ready for that setting.
