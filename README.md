@@ -26,6 +26,13 @@ data/fruits-360/
 
 No Kaggle API download step is needed in the notebook since the data is already on hand.
 
+## Model artifacts
+
+Running the notebook saves trained model checkpoints to `models/` (`baseline_cnn.keras`,
+`mobilenetv2_transfer.keras`) via `ModelCheckpoint`. This folder is **not** committed
+(see `.gitignore` — `*.keras` and `models/` are both excluded) since checkpoints are
+large binaries; re-run the notebook to regenerate them.
+
 ## Results
 
 Full details, plots, and confusion matrix are in [notebooks/fruit_classifier.ipynb](notebooks/fruit_classifier.ipynb).
@@ -35,10 +42,10 @@ Full details, plots, and confusion matrix are in [notebooks/fruit_classifier.ipy
 | Baseline CNN (from scratch) | 88.81% | 522,948 | ~10.3 hours |
 | MobileNetV2 (transfer learning) | 94.81% | 2,591,044 | ~2.1 hours |
 
-Neither model quite hit the PRD's >=95% target on this run — training was CPU-only
-(no GPU), so both runs were cut off by early stopping / a fixed epoch budget rather
-than run to full convergence. The transfer-learning result suggests the target is
-reachable with more training budget, not a different approach.
+Neither model quite hit the >=95% test accuracy target on this run — training was
+CPU-only (no GPU), so both runs were cut off by early stopping / a fixed epoch budget
+rather than run to full convergence. The transfer-learning result suggests the target
+is reachable with more training budget, not a different approach.
 
 **Limitations:** Fruits-360 images are studio-quality (centered, single object,
 uniform white background). This model has not been validated on real-world photos
